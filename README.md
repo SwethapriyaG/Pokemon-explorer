@@ -1,46 +1,24 @@
-# Getting Started with Create React App
+# Pokémon Explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## PokemonListPage.tsx
+State Management: The component manages three pieces of state: pokemonList, currentPage, and totalPages. pokemonList holds the list of Pokémon fetched from the API, currentPage tracks the current page of the list, and totalPages represents the total number of pages available.
 
-## Available Scripts
+Fetching Data: Inside useEffect, an API call is made to fetch Pokémon data whenever currentPage changes. The fetched data includes the list of Pokémon and the total count, which is used to calculate totalPages.
 
-In the project directory, you can run:
+Rendering: The Pokémon are mapped into a list of PokemonListItem components, each of which displays a Pokémon's name and image. The Pagination component is included to provide navigation controls.
 
-### `npm start`
+## PokemonDetailPage.tsx
+Fetching Data: When the component mounts, it fetches detailed data for the Pokémon specified by the name parameter in the URL. The data includes the Pokémon's abilities and sprite (image).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Rendering: The component renders the Pokémon's name, its abilities in a list, and its image. A link is provided at the bottom to navigate back to the Pokémon list.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Pagination.tsx
+Props: The component receives currentPage, totalPages, and onPageChange as props. It renders buttons to navigate between pages and calls onPageChange when a new page is selected.
+PokemonListItem.tsx
+Props: This component takes name and imageUrl as props. It renders a clickable item displaying the Pokémon's name and image, linking to the corresponding Pokémon detail page.
+## types.ts
+Interfaces:
+Pokemon: Represents a Pokémon in the list, including its name and url (used to fetch detailed data).
+PokemonDetail: Represents detailed information about a Pokémon, including its name, abilities, and sprites.
+Ability: Represents an ability of a Pokémon, used within the PokemonDetail interface.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
